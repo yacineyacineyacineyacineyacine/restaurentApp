@@ -10,19 +10,19 @@ const App = ({}) => {
       <SafeAreaView style={styles.container}>
         <View style={styles.search}>
           <Searchbar 
-            placholder='Search'
-            placeholderTextColor='#000'
+            placeholder='Search'
+            placeholderTextColor='#a9a9ac'
             icon={() => <Icon name='search' size={20} color='#909090' />}
             style={styles.searchBar}
             inputStyle={styles.searchBarInputStyle}
-            elevation={5}
+            elevation={10}
            />
         </View>
         <View style={styles.list}>
           <Text>List</Text>
         </View>
       </SafeAreaView>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" />       
     </>
   );
 };
@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
   },
   searchBar:{
     borderRadius: 5,
-    elvation:5
-
+    elvation: 5
   },
   searchBarInputStyle:{
     color: '#000',
