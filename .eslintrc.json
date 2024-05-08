@@ -2,7 +2,10 @@
     
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "airbnb/hooks",
+        "prettier",
+        "prettier/react"
     ],
     "parserOptions":{
         "ecmaFeatures":{
@@ -12,7 +15,9 @@
         "sourceType": "module"
     },
     "plugins":[
-        "react"
+        "react",
+        "react-native"
+        
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "allow": "as-needed" }],
