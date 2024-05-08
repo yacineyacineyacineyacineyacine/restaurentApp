@@ -4,18 +4,19 @@ import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const App = ({}) => {
+  
   return (
     <>
       <SafeAreaView style={styles.container}>
         <View style={styles.search}>
           <Searchbar 
             placholder='Search'
-            icon={() => <Icon name="search" size={30} color="#900" />}
+            placeholderTextColor='#000'
+            icon={() => <Icon name='search' size={20} color='#909090' />}
             style={styles.searchBar}
-            value={'hhhhh'}
             inputStyle={styles.searchBarInputStyle}
             elevation={5}
-             />
+           />
         </View>
         <View style={styles.list}>
           <Text>List</Text>
