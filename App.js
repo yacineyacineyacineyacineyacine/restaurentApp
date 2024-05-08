@@ -1,13 +1,33 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text} from 'react-native';
-View;
-const App = ({}) => {
+import {
+  View, Text, SafeAreaView, StatusBar,
+} from 'react-native';
+
+function App({}) {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>hello World</Text>
-    </View>
+    <>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          // marginTop: StatusBar.currentHeight,
+        }}
+      >
+        <View
+          style={{
+            padding: 16,
+            backgroundColor: 'green',
+          }}
+        >
+          <Text>Search</Text>
+        </View>
+        <View style={{ flex: 1, padding: 16, backgroundColor: 'blue' }}>
+          <Text>List</Text>
+        </View>
+      </SafeAreaView>
+      <StatusBar style="auto" />
+    </>
   );
-};
+}
 
 export default App;
