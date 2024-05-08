@@ -1,12 +1,21 @@
 import React from 'react';
 import { View, Text, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
-function App({}) {
+const App = ({}) => {
   return (
     <>
       <SafeAreaView style={styles.container}>
         <View style={styles.search}>
-          <Text>Search</Text>
+          <Searchbar 
+            placholder='Search'
+            icon={() => <Icon name="search" size={30} color="#900" />}
+            style={styles.searchBar}
+            value={'hhhhh'}
+            inputStyle={styles.searchBarInputStyle}
+            elevation={5}
+             />
         </View>
         <View style={styles.list}>
           <Text>List</Text>
@@ -15,7 +24,7 @@ function App({}) {
       <StatusBar style="auto" />
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -25,7 +34,19 @@ const styles = StyleSheet.create({
   },
   search: {
     padding: 16,
-    backgroundColor: 'green',
+  },
+  searchBar:{
+    borderRadius: 5,
+    elvation:5
+
+  },
+  searchBarInputStyle:{
+    color: '#000',
+    fontFamily: 'roboto',
+    fontSize: 15,
+    fontStyle: 'normal',
+    fontWeight: '100',
+    letterSpacing: .5
   },
   list: {
     flex: 1,
