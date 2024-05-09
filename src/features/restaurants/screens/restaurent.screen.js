@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, View, Text , StyleSheet} from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5' ;
-import RestaurentInfo from '../components/restaurent-info.component';
+import RestaurentInfoCard from '../components/restaurent-info-card.component';
 
 const Restaurentscreen =  () =>  {
 
@@ -21,7 +21,7 @@ const Restaurentscreen =  () =>  {
            />
         </View>
         <View style={styles.list}>
-          <RestaurentInfo />
+          <RestaurentInfoCard />
         </View>
       </SafeAreaView>
     </>
