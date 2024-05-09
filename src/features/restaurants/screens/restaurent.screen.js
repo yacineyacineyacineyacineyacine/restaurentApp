@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5' ;
 import RestaurentInfo from '../components/restaurent-info.component';
 
 const Restaurentscreen =  () =>  {
+
+    
   return (
     <>
       <SafeAreaView style={styles.container}>
