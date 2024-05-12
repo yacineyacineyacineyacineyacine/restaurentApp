@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5' ;
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
 
 const Restaurentscreen =  () =>  {
-  
+
     
   return (
     <>
@@ -36,11 +36,8 @@ const styles = StyleSheet.create({
     },
     search: {
       padding: 16,
-      elevation: 5,
     },
     searchBar:{
-      //need to add shadow here  
-      backgroundColor: '#fff',
       borderRadius: 5,
       elevation: 5,
       shadowColor: '#f3f3f3',
