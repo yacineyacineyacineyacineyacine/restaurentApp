@@ -42,7 +42,11 @@ const styles = StyleSheet.create({
       //need to add shadow here  
       backgroundColor: '#fff',
       borderRadius: 5,
-      elvation: 5
+      elevation: 5,
+      shadowColor: '#f3f3f3',
+      shadowOffset:{width: 0, height: 1},
+      shadowOpacity: 0.8,
+      shadowRadius: 1,
     },
     searchBarInputStyle:{
       color: '#000',
