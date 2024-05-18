@@ -3,6 +3,15 @@ import styled from 'styled-components/native'
 import { Text, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 
+
+const RestaurentCard = styled(Card)`
+  background-color: '#fff';
+`;
+const RestaurentCardCover = styled(Card.Cover)`
+  background-color: '#fff';
+  padding: 20px;
+`;
+const RestaurentCardContent = styled(Card.Content)``;
 const Title = styled.Text`
   padding: 2px;
   color: red;
@@ -22,13 +31,13 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
         isClosedTemporarily,
     } = restaurent;
   return (
-   <Card elevation={5} style={styles.card}>
-     <Card.Cover key={name} style={styles.cover}source={{uri: photos[0]}} />
-     <Card.Content>
+   <RestaurentCard elevation={5} style={styles.card}>
+     <RestaurentCardCover key={name} style={styles.cover}source={{uri: photos[0]}} />
+     <RestaurentCardContent>
       <Title>{name}</Title>
         {/* <Text style={styles.title}>{name}</Text> */}
-     </Card.Content>
-   </Card>
+     </RestaurentCardContent>
+   </RestaurentCard>
   );
 };
 
