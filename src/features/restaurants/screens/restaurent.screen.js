@@ -11,26 +11,26 @@ const SafeArea = styled.SafeAreaView`
   flex-basis: 0;
   flex-direction: column;
 `;
-const SearchContainer = styled.View`padding: 16px`;
+const SearchContainer = styled.View`
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
+  `;
 const StyledSearchbar = styled(Searchbar)`
-  border-radius: 5px;
-  shadow-color: #f3f3f3;
-  shadow-offset: {width: 0, height: 1};
-  shadow-opacity: 0.8;
-  shadow-radius: 2;
-  elevation: 1;
-`;
+  shadow-color: ${(props) => props.theme.colors.ui.primary};
+  background-color: ${(props) => props.theme.colors.bg.primary};
+  border-radius: ${(props) => props.theme.space[1]};
+  `;
 const RestaurentListContainer = styled.View`
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0;
-  padding: 16px;
-  backgroundColor: 'blue';
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `; 
 
 const Restaurentscreen =  () =>  {
 
-    
+   
   return (
     <>
       <SafeArea>
@@ -40,7 +40,7 @@ const Restaurentscreen =  () =>  {
             placeholderTextColor='#a9a9ac'
             icon={() => <Icon name='search' size={20} color='#909090' />}
             inputStyle={styles.searchBarInputStyle}
-            elevation={10}
+            elevation={5}
            />
         </SearchContainer>
         <RestaurentListContainer>

@@ -5,15 +5,15 @@ import { Card } from 'react-native-paper';
 
 
 const RestaurentCard = styled(Card)`
-  background-color: '#fff';
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 const RestaurentCardCover = styled(Card.Cover)`
-  background-color: '#fff';
-  padding: 20px;
+  background-color: ${(props) => props.theme.colors.bg.primary};;
+  padding: ${(props) => props.theme.space[3]};
 `;
 const RestaurentCardContent = styled(Card.Content)``;
 const Title = styled.Text`
-  padding: 2px;
+  padding: ${(props) => props.theme.space[1]};
   color: ${(props) =>  props.theme.colors.ui.primary};
   
 `;
