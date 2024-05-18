@@ -5,14 +5,14 @@ import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5' ;
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
 
-const Container = styled.SafeAreaView`
+const SafeArea = styled.SafeAreaView`
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0;
   flex-direction: column;
 `;
-const Search = styled.View`padding: 16px`;
-const StyledSearchbar = styled(Searchbar)`
+const SearchContainer = styled.View`padding: 16px`;
+const Searchbar = styled(Searchbar)`
   border-radius: 5px;
   shadow-color: #f3f3f3;
   shadow-offset: {width: 0, height: 1};
@@ -20,7 +20,7 @@ const StyledSearchbar = styled(Searchbar)`
   shadow-radius: 2;
   elevation: 1;
 `;
-const StyledList = styled.View`
+const RestaurentListContainer = styled.View`
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0;
@@ -33,20 +33,20 @@ const Restaurentscreen =  () =>  {
     
   return (
     <>
-      <Container>
-        <Search>
-          <StyledSearchbar 
+      <SafeArea>
+        <SearchContainer>
+          <Searchbar 
             placeholder='Search'
             placeholderTextColor='#a9a9ac'
             icon={() => <Icon name='search' size={20} color='#909090' />}
             inputStyle={styles.searchBarInputStyle}
             elevation={10}
            />
-        </Search>
-        <StyledList>
+        </SearchContainer>
+        <RestaurentListContainer>
           <RestaurentInfoCard />
-        </StyledList>
-      </Container>
+        </RestaurentListContainer>
+      </SafeArea>
     </>
   );
 };
