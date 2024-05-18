@@ -12,7 +12,7 @@ const SafeArea = styled.SafeAreaView`
   flex-direction: column;
 `;
 const SearchContainer = styled.View`padding: 16px`;
-const Searchbar = styled(Searchbar)`
+const StyledSearchbar = styled(Searchbar)`
   border-radius: 5px;
   shadow-color: #f3f3f3;
   shadow-offset: {width: 0, height: 1};
@@ -35,7 +35,7 @@ const Restaurentscreen =  () =>  {
     <>
       <SafeArea>
         <SearchContainer>
-          <Searchbar 
+          <StyledSearchbar 
             placeholder='Search'
             placeholderTextColor='#a9a9ac'
             icon={() => <Icon name='search' size={20} color='#909090' />}
