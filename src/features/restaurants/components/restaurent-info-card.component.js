@@ -15,7 +15,8 @@ const RestaurentCardContent = styled(Card.Content)``;
 const Title = styled.Text`
   padding: ${(props) => props.theme.space[1]};
   color: ${(props) =>  props.theme.colors.ui.primary};
-  
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.title}
 `;
 const RestaurentInfoCard = ({restaurent = {}}) =>  {
   
@@ -35,10 +36,7 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
      <RestaurentCardCover key={name} style={styles.cover}source={{uri: photos[0]}} />
      <RestaurentCardContent>
       <Title>{name}</Title>
-      <Text style={{fontFamily:'Oswald-Regular', color:'black', fontSize: 20}}>Whereas recognition of the inherent</Text>
-      <Text style={{fontFamily:'Lato-Regular', color: 'black', fontSize: 20}}>Whereas recognition of the inherent</Text>
-        {/* <Text style={styles.title}>{name}</Text> */}
-     </RestaurentCardContent>
+      </RestaurentCardContent>
    </RestaurentCard>
   );
 };
