@@ -76,10 +76,12 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
           <Text varinat='label' style={{color: 'red'}}> 
              CLOESED TEMPORARLY
           </Text>)}
-          <Spacer variant='left.large'/>
-          {isOpenNow? <SvgXml xml={open} width={20} height={20}/> : null}
-          <Spacer variant='left.large'/>
-          <Image style={{width: 15, height: 15}} source={{uri:icon}}/>
+          <Spacer position='left' size='large'>
+            {isOpenNow? <SvgXml xml={open} width={20} height={20}/> : null}
+          </Spacer>
+          <Spacer position='left' size='large'>
+             <Image style={{width: 15, height: 15}} source={{uri:icon}}/>
+          </Spacer>
         </SectionEnd>
       </Section>
       <Adress>{address}</Adress>
