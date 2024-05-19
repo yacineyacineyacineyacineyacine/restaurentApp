@@ -35,6 +35,8 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
      <RestaurentCardCover key={name} style={styles.cover}source={{uri: photos[0]}} />
      <RestaurentCardContent>
       <Title>{name}</Title>
+      <Text style={{fontFamily:'Oswald-Regular', color:'black', fontSize: 20}}>Whereas recognition of the inherent</Text>
+      <Text style={{fontFamily:'Lato-Regular', color: 'black', fontSize: 20}}>Whereas recognition of the inherent</Text>
         {/* <Text style={styles.title}>{name}</Text> */}
      </RestaurentCardContent>
    </RestaurentCard>
