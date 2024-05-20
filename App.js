@@ -6,6 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { theme } from './src/infrastructure/theme/index';
 import Restaurentscreen from './src/features/restaurants/screens/restaurent.screen';
+import { MapScreen } from './src/features/map/screens/map.screen';
+import { SettingsScreen } from './src/features/settings/screens/settings.screen';
 // import { isLoaded } from 'expo-font';
 
 const Tab = createBottomTabNavigator();
@@ -24,12 +26,12 @@ const App = ({}) => {
       <ThemeProvider theme={theme}>
           <Tab.Navigator>
             <Tab.Screen name="Restaurents" component={Restaurentscreen} />
-            {/* <Tab.Screen name="Map" component={null} />
-            <Tab.Screen name="Settings" component={null} /> */}
+            <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
           </Tab.Navigator>
           {/* <Restaurentscreen /> */}
       </ThemeProvider>
-      <StatusBar style="auto" />
+        <StatusBar style="auto" />
     </NavigationContainer>
             
     </>
