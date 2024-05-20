@@ -7,11 +7,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
 import { Spacer } from '../../../components/spacer/spacer.components';
+import { SafeArea } from '../../../components/utility/safe.area.component';
 
-const SafeArea = styled.SafeAreaView`
-  flex: 1;
-  flex-direction: column;
-`;
+
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
