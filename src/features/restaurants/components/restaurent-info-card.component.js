@@ -55,7 +55,7 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
         address = '100 some random street',
         isOpenNow = true,
         rating = 4,
-        isClosedTemporarily = true,
+        isClosedTemporarily = false,
     } = restaurent;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -76,10 +76,10 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
           <Text varinat='label' style={{color: 'red'}}> 
              CLOESED TEMPORARLY
           </Text>)}
-          <Spacer position='left' size='large'>
+          <Spacer position='left' size='medium'>
             {isOpenNow? <SvgXml xml={open} width={20} height={20}/> : null}
           </Spacer>
-          <Spacer position='left' size='large'>
+          <Spacer position='left' size='medium'>
              <Image style={{width: 15, height: 15}} source={{uri:icon}}/>
           </Spacer>
         </SectionEnd>
