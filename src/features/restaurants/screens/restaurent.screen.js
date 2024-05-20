@@ -2,7 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import { FlatList , StyleSheet} from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome5' ;
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
+
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
 import { Spacer } from '../../../components/spacer/spacer.components';
 

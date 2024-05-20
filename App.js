@@ -1,13 +1,14 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
-// import * as Fonts from 'expo-font';
-// import { useFonts as useOswald, Oswald_400Regular } from '@expo-google-fonts/oswald';
-// import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { theme } from './src/infrastructure/theme/index';
 import Restaurentscreen from './src/features/restaurants/screens/restaurent.screen';
 // import { isLoaded } from 'expo-font';
+
+const Tab = createBottomTabNavigator();
 
 const App = ({}) => {
   
@@ -19,10 +20,18 @@ const App = ({}) => {
   // }
   return (
     <>
+    <NavigationContainer>
       <ThemeProvider theme={theme}>
-        <Restaurentscreen />
+          <Tab.Navigator>
+            <Tab.Screen name="Restaurents" component={Restaurentscreen} />
+            {/* <Tab.Screen name="Map" component={null} />
+            <Tab.Screen name="Settings" component={null} /> */}
+          </Tab.Navigator>
+          {/* <Restaurentscreen /> */}
       </ThemeProvider>
-      <StatusBar style="auto" />       
+      <StatusBar style="auto" />
+    </NavigationContainer>
+            
     </>
   );
 };
