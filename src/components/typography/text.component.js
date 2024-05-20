@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 
 const defaultTextStyle = (theme) => `
   font-family: ${theme.fonts.body};
-  font-weight: ${theme.fontsWeights.regular};
+  font-weight: ${theme.fontWeights.regular};
   color: ${theme.colors.text.primary};
   flex-wrap: wrap;
   margin-top: ${theme.space[0]};
@@ -23,13 +23,13 @@ const error = (theme)=>`
 
 const caption = (theme)=>`
   font-size: ${theme.fontSizes.caption};
-  font-weight: ${theme.fontsWeights.bold};
+  font-weight: ${theme.fontWeights.bold};
 `;
 
 const label = (theme) =>`
   font-family: ${theme.fonts.heading};
   font-size: ${theme.fontSizes.body};
-  font-weight: ${theme.fontsWeights.medium};
+  font-weight: ${theme.fontWeights.medium};
 `;
 
 const variants ={
