@@ -1,14 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { SafeAreaView, View, Text , StyleSheet} from 'react-native';
+import { FlatList , StyleSheet} from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5' ;
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
+import { Spacer } from '../../../components/spacer/spacer.components';
 
 const SafeArea = styled.SafeAreaView`
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
+  flex: 1;
   flex-direction: column;
 `;
 const SearchContainer = styled.View`
@@ -20,13 +19,12 @@ const StyledSearchbar = styled(Searchbar)`
   background-color: ${(props) => props.theme.colors.bg.primary};
   border-radius: ${(props) => props.theme.space[1]};
   `;
-const RestaurentListContainer = styled.View`
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
-  padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`; 
+ const RestaurentList = styled(FlatList).attrs({
+   contentContainerStyle:{
+    padding:16,
+    backgroundColor: '#ffffff'
+   }
+ })`` 
 
 const Restaurentscreen =  () =>  {
 
@@ -43,9 +41,15 @@ const Restaurentscreen =  () =>  {
             elevation={5}
            />
         </SearchContainer>
-        <RestaurentListContainer>
-          <RestaurentInfoCard />
-        </RestaurentListContainer>
+        <RestaurentList
+          data={[{name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {name: 9}, {name: 10}, {name: 11}, {name: 12}]}
+          renderItem={() => 
+            <Spacer position='bottom' size='large'>
+              <RestaurentInfoCard/>
+            </Spacer>}
+          keyExtractor={(item) => item.name}
+         
+        />
       </SafeArea>
     </>
   );

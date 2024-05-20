@@ -3,7 +3,7 @@ import { Card } from 'react-native-paper';
 
 export const RestaurentCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
-  elevation: 5;
+  
 `;
 
 export const RestaurentCardCover = styled(Card.Cover)`
