@@ -3,12 +3,12 @@ import { Settings, StatusBar, Text } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicicons from 'react-native-vector-icons/Ionicons';
+import camelize from 'camelize';
 
 import { theme } from './src/infrastructure/theme/index';
 import Restaurentscreen from './src/features/restaurants/screens/restaurent.screen';
 import { SafeArea } from './src/components/utility/safe.area.component';
-import Ionicicons from 'react-native-vector-icons/Ionicons'
-
 
 const Tab = createBottomTabNavigator();
 
