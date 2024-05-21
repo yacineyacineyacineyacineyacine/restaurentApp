@@ -4,11 +4,11 @@ import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicicons from 'react-native-vector-icons/Ionicons';
-import camelize from 'camelize';
 
 import { theme } from './src/infrastructure/theme/index';
 import Restaurentscreen from './src/features/restaurants/screens/restaurent.screen';
 import { SafeArea } from './src/components/utility/safe.area.component';
+import { RestaurantsContextProvider } from './src/services/restaurants/restaurents.context';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,16 +39,18 @@ const App = ({}) => {
    return (
     <>
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator
-         screenOptions = {createScreenOptions}         
-         >
-          <Tab.Screen name='Restaurents' component={Restaurentscreen} />
-          <Tab.Screen name='Map' component={MapScreen} />
-          <Tab.Screen name='Settings' component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+      <RestaurantsContextProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+          screenOptions = {createScreenOptions}         
+          >
+            <Tab.Screen name='Restaurents' component={Restaurentscreen} />
+            <Tab.Screen name='Map' component={MapScreen} />
+            <Tab.Screen name='Settings' component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </RestaurantsContextProvider>
+     </ThemeProvider>
     <StatusBar style='auto' />
    
             
