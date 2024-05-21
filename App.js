@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Text } from 'react-native';
+import { Settings, StatusBar, Text } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,6 +11,27 @@ import Ionicicons from 'react-native-vector-icons/Ionicons'
 
 
 const Tab = createBottomTabNavigator();
+
+const TAB_ICONS = {
+  Restaurents: 'restaurant',
+  Map: 'map',
+  Settings: 'settings'
+}
+
+const tabBarIcon = (iconName) => ({color, size})  =>{
+  return <Ionicicons name={iconName} size={size} color={color}/>
+}
+
+const createScreenOptions = ({route}) =>{
+  const iconName = TAB_ICONS[route.name];
+ return {
+  headerShown: false,
+  tabBarIcon: tabBarIcon(iconName),
+  tabBarActiveTintColor: 'tomato',
+  tabBarInactiveTintColor: 'gray'
+  }
+}
+
 const MapScreen = () => <SafeArea><Text>Settings screen</Text></SafeArea>
 const SettingsScreen = () => <SafeArea><Text>Settings screen</Text></SafeArea>
 const App = ({}) => {
@@ -20,36 +41,15 @@ const App = ({}) => {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Tab.Navigator
-         screenOptions={({route})=>({
-          headerShown: false,
-          tabBarIcon: ({focused, color, size}) =>{
-            let iconName;
-            if(route.name === 'Restaurents'){
-               iconName = focused
-               ? 'restaurant'
-               : 'restaurant-outline';
-            }else if(route.name === 'Map') {
-              iconName = focused
-               ? 'map'
-               : 'map-outline';
-            }else if(route.name === 'Settings'){
-              iconName = focused
-               ? 'settings'
-               : 'settings-outline';
-            }
-            return <Ionicicons name={iconName} size={size} color={color}/>
-          },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray'
-         })}
-        >
-          <Tab.Screen name="Restaurents" component={Restaurentscreen} />
-          <Tab.Screen name="Map" component={MapScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
+         screenOptions = {createScreenOptions}         
+         >
+          <Tab.Screen name='Restaurents' component={Restaurentscreen} />
+          <Tab.Screen name='Map' component={MapScreen} />
+          <Tab.Screen name='Settings' component={SettingsScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </ThemeProvider>
-    <StatusBar style="auto" />
+    <StatusBar style='auto' />
    
             
     </>
