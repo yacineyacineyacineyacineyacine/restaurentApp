@@ -27,7 +27,7 @@ const StyledSearchbar = styled(Searchbar)`
  })`` 
 
 const Restaurentscreen =  () =>  {
-  const restaurantsContext = useContext(RestaurantsContext);
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
      
   return (
     <>
@@ -42,11 +42,12 @@ const Restaurentscreen =  () =>  {
            />
         </SearchContainer>
         <RestaurentList
-          data={restaurantsContext.restaurants}
-          renderItem={() => 
-            <Spacer position='bottom' size='large'>
-              <RestaurentInfoCard/>
-            </Spacer>}
+          data={restaurants}
+          renderItem={(item) => {
+            
+            return (<Spacer position='bottom' size='large'>
+              <RestaurentInfoCard restaurant={item}/>
+            </Spacer>)}}
           keyExtractor={(item) => item.name}
          
         />

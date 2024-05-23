@@ -9,8 +9,7 @@ import { RestaurentCard, RestaurentCardCover, RestaurentCardContent, Section, Ra
 
 
 
-const RestaurentInfoCard = ({restaurent = {}}) =>  {
-  
+const RestaurentInfoCard = ({restaurant}) =>  {
     const {
         name = 'Some restaurent',
         icon = 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
@@ -21,7 +20,7 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
         isOpenNow = true,
         rating = 4,
         isClosedTemporarily = true,
-    } = restaurent;
+    } = restaurant.item;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     
