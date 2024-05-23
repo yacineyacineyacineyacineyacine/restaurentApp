@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components/native';
-import { FlatList , StyleSheet, View} from 'react-native';
+import { FlatList , StyleSheet} from 'react-native';
 import { ActivityIndicator, MD2Colors, Searchbar,  } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -26,14 +26,13 @@ const StyledSearchbar = styled(Searchbar)`
    }
  })``;
  
- const ViewIndicator = styled.View`
+ const LoadingContainer = styled.View`
    position: absolute;
    top: 50%;
    left: 50%
  `;
- const Indicator = styled(ActivityIndicator).attrs({
-  
-  color: MD2Colors.blue300,
+ const Loading = styled(ActivityIndicator).attrs({
+    color: MD2Colors.blue300,
   size: 50
  })`
    margin-left: -25px;
@@ -55,9 +54,9 @@ const Restaurentscreen =  () =>  {
             elevation={5}
            />
         </SearchContainer>
-        {isLoading && (<ViewIndicator>
-           <Indicator animating={isLoading} />
-        </ViewIndicator>)}
+        {isLoading && (<LoadingContainer>
+           <Loading animating={isLoading} />
+        </LoadingContainer>)}
         <RestaurentList
           data={restaurants}
           renderItem={(item) => {
