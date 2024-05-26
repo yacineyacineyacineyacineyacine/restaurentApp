@@ -33,7 +33,6 @@ import { Search } from '../components/search.component';
 
 const Restaurentscreen =  () =>  {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-  // const {}
      
   return (
     <>
