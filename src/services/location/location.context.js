@@ -7,9 +7,9 @@ export const LocationContextProvider = ({children}) =>{
   const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState('san francisco');
 
-  const onSearch = (searchKeyword = 'San Francisco') =>{
+  const onSearch = (searchKeyword) =>{
     setIsLoading(true);
     setKeyword(searchKeyword);
     if(!searchKeyword.length) return
@@ -18,7 +18,8 @@ export const LocationContextProvider = ({children}) =>{
     .then(result => {
       setLocation(result);
       setIsLoading(false);
-      console.log(result);
+      console.log('location.context: ', searchKeyword);
+      console.log('location.context: ', location);
     })
     .catch(err =>{
       console.log(err);
