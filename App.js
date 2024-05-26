@@ -5,21 +5,19 @@ import { theme } from './src/infrastructure/theme/index';
 
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurents.context';
 import { LocationContextProvider } from './src/services/location/location.context';
-import { Navigator } from './src/infrastructure/navigation/app.navigator';
+import { Navigation } from './src/infrastructure/navigation/';
 const App = ({}) => {
   
    return (
     <>
-    <ThemeProvider theme={theme}>
-      <LocationContextProvider>
-        <RestaurantsContextProvider>
-          <Navigator/>
-        </RestaurantsContextProvider>
-      </LocationContextProvider>
-    </ThemeProvider>
-    <StatusBar style='auto' />
-   
-            
+      <ThemeProvider theme={theme}>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <Navigation/>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
+      </ThemeProvider>
+      <StatusBar style='auto' />
     </>
   );
 };

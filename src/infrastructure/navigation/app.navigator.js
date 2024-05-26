@@ -31,7 +31,7 @@ const TAB_ICONS = {
   const MapScreen = () => <SafeArea><Text>Settings screen</Text></SafeArea>
   const SettingsScreen = () => <SafeArea><Text>Settings screen</Text></SafeArea>
 
-export const Navigator =() => {
+export const AppNavigator =() => {
 
     const Tab = createBottomTabNavigator();
 
