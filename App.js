@@ -9,6 +9,7 @@ import { theme } from './src/infrastructure/theme/index';
 import Restaurentscreen from './src/features/restaurants/screens/restaurent.screen';
 import { SafeArea } from './src/components/utility/safe.area.component';
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurents.context';
+import { LocationContextProvider } from './src/services/location/location.context';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,18 +40,20 @@ const App = ({}) => {
    return (
     <>
     <ThemeProvider theme={theme}>
-      <RestaurantsContextProvider>
-        <NavigationContainer>
-          <Tab.Navigator
-          screenOptions = {createScreenOptions}         
-          >
-            <Tab.Screen name='Restaurents' component={Restaurentscreen} />
-            <Tab.Screen name='Map' component={MapScreen} />
-            <Tab.Screen name='Settings' component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </RestaurantsContextProvider>
-     </ThemeProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+            screenOptions = {createScreenOptions}         
+            >
+              <Tab.Screen name='Restaurents' component={Restaurentscreen} />
+              <Tab.Screen name='Map' component={MapScreen} />
+              <Tab.Screen name='Settings' component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
+    </ThemeProvider>
     <StatusBar style='auto' />
    
             
