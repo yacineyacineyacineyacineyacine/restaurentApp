@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicicons from 'react-native-vector-icons/Ionicons';
 
-import Restaurentscreen from '../../features/restaurants/screens/restaurent.screen';
+import { RestaurentsNavigator } from './restaurents.navigator';
 import { SafeArea } from '../../components/utility/safe.area.component';
 
 const TAB_ICONS = {
@@ -40,7 +40,7 @@ export const AppNavigator =() => {
         <Tab.Navigator
         screenOptions = {createScreenOptions}         
         >
-          <Tab.Screen name='Restaurents' component={Restaurentscreen} />
+          <Tab.Screen name='Restaurents' component={RestaurentsNavigator} />
           <Tab.Screen name='Map' component={MapScreen} />
           <Tab.Screen name='Settings' component={SettingsScreen} />
         </Tab.Navigator>
