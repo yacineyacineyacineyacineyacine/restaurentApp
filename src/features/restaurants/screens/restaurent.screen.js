@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components/native';
-import { FlatList , StyleSheet, Pressable} from 'react-native';
+import { FlatList , Pressable, StyleSheet} from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
