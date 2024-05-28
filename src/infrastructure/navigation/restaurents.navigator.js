@@ -8,7 +8,7 @@ const createScreenOptions = ({route}) =>{
 
    return {
     headerShown: false,
-    ...TransitionPresets.ModalPresentationIOS
+    ...TransitionPresets.ModalSlideFromBottomIOS
     
     }
   }
