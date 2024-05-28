@@ -46,9 +46,9 @@ const Restaurentscreen =  ({navigation}) =>  {
           renderItem={(item) => {
             
             return (
-              <Pressable onPress={() => navigation.navigate('RestaurentsDetail')}>
+              <Pressable onPress={() => navigation.navigate('RestaurentsDetail', {restaurant: item.item})}>
                 <Spacer position='bottom' size='large'>
-                    <RestaurentInfoCard restaurant={item}/>
+                    <RestaurentInfoCard restaurant={item.item}/>
                  </Spacer>
               </Pressable>
               

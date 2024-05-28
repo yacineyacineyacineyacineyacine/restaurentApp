@@ -21,7 +21,7 @@ const RestaurentInfoCard = ({restaurant}) =>  {
         rating = 4,
         isClosedTemporarily = true,
         placeId
-    } = restaurant.item;
+    } = restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     
