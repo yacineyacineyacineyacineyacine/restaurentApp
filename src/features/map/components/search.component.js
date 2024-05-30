@@ -30,7 +30,10 @@ export const Search = () => {
     const { keyword, search } = useContext(LocationContext);
     const [searchKeyword, setSearchKeyword] = useState(keyword) 
 
-       
+    useEffect(() => {
+        setSearchKeyword(keyword)
+    }, [keyword]);
+
     return (
         
             <StyledSearchbar 
@@ -41,7 +44,7 @@ export const Search = () => {
             }}
             onSubmitEditing={() => search(searchKeyword)}
             placeholderTextColor='#a9a9ac'
-            icon={() => <Icon name='search' size={20} color='#909090' />}
+            icon= 'map'
             inputStyle={styles.searchBarInputStyle}
             elevation={5}
             />
