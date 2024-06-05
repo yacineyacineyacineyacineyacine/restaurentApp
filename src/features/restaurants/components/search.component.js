@@ -16,7 +16,7 @@ const StyledSearchbar = styled(Searchbar)`
   border-radius: ${(props) => props.theme.space[1]};
   `;
 
-export const Search = () => {
+export const Search = ({isFavouritesToggled, onFavouriteToggle}) => {
 
     const { keyword, search } = useContext(LocationContext);
     const [searchKeyword, setSearchKeyword] = useState(keyword) 
@@ -24,7 +24,8 @@ export const Search = () => {
     useEffect(() => {
       setSearchKeyword(keyword)
   }, [keyword]);
-       
+
+         
     return (
         <SearchContainer>
             <StyledSearchbar 
@@ -33,9 +34,10 @@ export const Search = () => {
             onChangeText = {(text) =>{
               setSearchKeyword(text.trim())
             }}
+            onIconPress={onFavouriteToggle}
             onSubmitEditing={() => search(searchKeyword)}
             placeholderTextColor='#a9a9ac'
-            icon='heart-outline'
+            icon={isFavouritesToggled ? 'heart' : 'heart-outline'}
             inputStyle={styles.searchBarInputStyle}
             elevation={5}
             />
