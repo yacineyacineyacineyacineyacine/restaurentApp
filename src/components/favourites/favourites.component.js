@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import AntDesign  from 'react-native-vector-icons/AntDesign';
 import { TouchableOpacity } from 'react-native';
 
+
 const FavouriteButton = styled(TouchableOpacity)`
   backgroud-color: transparent;
   border-color: #20232a;
@@ -14,8 +15,6 @@ const FavouriteButton = styled(TouchableOpacity)`
 
 
 import { FavouritesContext } from '../../services/favourites/favourites.context';
-
-
 
 export const Favourite = ({restaurant}) => {
     const { favourites, addToFavourites, removeFromFavourites}  = useContext(FavouritesContext);
