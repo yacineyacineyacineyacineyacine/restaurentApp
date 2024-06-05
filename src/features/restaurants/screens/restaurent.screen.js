@@ -7,7 +7,7 @@ import RestaurentInfoCard from '../components/restaurent-info-card.component';
 import { Spacer } from '../../../components/spacer/spacer.components';
 import { SafeArea } from '../../../components/utility/safe.area.component';
 import { RestaurantsContext } from '../../../services/restaurants/restaurents.context';
-import { LocationContext } from '../../../services/location/location.context';
+
 import { Search } from '../components/search.component';
 
 
@@ -25,7 +25,7 @@ import { Search } from '../components/search.component';
  `;
  const Loading = styled(ActivityIndicator).attrs({
     color: MD2Colors.blue300,
-  size: 50
+    size: 50
  })`
    margin-left: -25px;
  `
@@ -33,7 +33,8 @@ import { Search } from '../components/search.component';
 
 const Restaurentscreen =  ({navigation}) =>  {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-     
+  
+
   return (
     <>
       <SafeArea>
