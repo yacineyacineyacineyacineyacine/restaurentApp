@@ -1,18 +1,20 @@
 // @flow 
 import React, {useContext, useEffect, useState} from 'react';
 import {  } from 'react-native';
-import MapView,{ Marker } from 'react-native-maps';
+import MapView,{ Marker, Callout } from 'react-native-maps';
 import styled from 'styled-components/native';
 
 import { Search } from '../components/search.component';
 import { LocationContext } from '../../../services/location/location.context';
 import { RestaurantsContext } from '../../../services/restaurants/restaurents.context';
+import { MapCallout } from '../components/map-callout.component';
+import { Navigation } from '../../../infrastructure/navigation';
 
 const Map = styled(MapView)`
   flex: 1;
 `;
 
-export const MapScreen = () => {
+export const MapScreen = ({navigation}) => {
 
     const { location } = useContext(LocationContext);
     const { restaurants } = useContext(RestaurantsContext);
@@ -49,13 +51,20 @@ export const MapScreen = () => {
            }}
            >
              {restaurants.map((restaurant, index) =>{
-                // console.log(restaurant.geometry.location);
-                return <Marker 
+                //  console.log(restaurant.geometry.location);
+                return (
+                    
+                <Marker 
                     key={`marker-${restaurant.placeId}-${index}`}
+                    title={restaurant.name}
                     coordinate={{
                         latitude: restaurant.geometry.location.lat,
                         longitude: restaurant.geometry.location.lng,
-                    }} />;
+                    }} >
+                        <Callout onPress={() => navigation.navigate('RestaurentDetail', {restaurant})}>
+                            <MapCallout restaurant={restaurant}/>
+                        </Callout>
+                </Marker>);
              })}
 
            </Map>
