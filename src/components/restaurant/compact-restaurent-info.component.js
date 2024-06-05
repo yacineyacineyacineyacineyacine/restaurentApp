@@ -29,8 +29,8 @@ export const CompactReataurentInfo = ({restaurant}) =>{
     const Image = isAndroid ? CompactWebView : CompactImage ;
     return(
         <Item>
-             <Image source={{uri: restaurant.photos[0]}} />
-            <Text variant='label'>{restaurant.name}</Text>
+             <CompactImage source={{uri: restaurant.photos[0]}} />
+            <Text>{restaurant.name}</Text>
         </Item>
     )
 }
