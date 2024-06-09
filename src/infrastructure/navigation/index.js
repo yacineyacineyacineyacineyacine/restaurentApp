@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { AuthenticationContext } from '../../services/autentication/authentication.context';
 import { AppNavigator } from './app.navigator';
+import { AccountNavigator } from './account.navigator';
 
 export const Navigation = () =>{
+     const { user } = useContext(AuthenticationContext);
+       
     return(
-        <AppNavigator/>
+        <NavigationContainer>
+           {user ? <AppNavigator/> : <AccountNavigator/>}
+        </NavigationContainer>
+       
     )
 }
