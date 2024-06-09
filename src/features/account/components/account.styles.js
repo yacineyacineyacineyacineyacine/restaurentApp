@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { colors } from '../../../infrastructure/theme/colors';
-import { Button } from 'react-native-paper';
+import { Button, TextInput, Text } from 'react-native-paper';
 
 export const AccountBackground = styled.ImageBackground.attrs({
    source: require('../../../../assets/images/home_bg.jpg'),
@@ -25,7 +25,7 @@ export const AccountContainer = styled.View`
 
 export const AuthButton = styled(Button).attrs({
     color: colors.brand.primary,
-    icon:'lock-open-outline',
+    // icon:'lock-open-outline',
     mode:'elevated',
     buttonColor: colors.brand.primary,
     textColor: colors.text.inverse
@@ -33,4 +33,20 @@ export const AuthButton = styled(Button).attrs({
 })`
  border-radius: 3px;
  padding: ${(props) => props.theme.space[2]}
+`;
+
+export const AuthInput = styled(TextInput)`
+   width: 300px;
+`;
+
+export const Title = styled(Text)`
+  font-size: 30px;
+`;
+
+export const ErrorContainer = styled.View`
+  max-width: 300px;
+  align-items: center;
+  align-self: center;
+  margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]}
 `;
