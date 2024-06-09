@@ -9,6 +9,11 @@ import { MapScreen } from '../../features/map/screens/map.screen';
 import { SafeArea } from '../../components/utility/safe.area.component';
 import { AuthenticationContext } from '../../services/autentication/authentication.context';
 
+import { LocationContextProvider } from '../../services/location/location.context';
+import { FavouritesContextProvider } from '../../services/favourites/favourites.context';
+import { RestaurantsContextProvider } from '../../services/restaurants/restaurents.context';
+
+
 const TAB_ICONS = {
     Restaurents: 'restaurant',
     Map: 'map',
@@ -44,13 +49,18 @@ export const AppNavigator =() => {
    
     const Tab = createBottomTabNavigator();
     return (
-       <Tab.Navigator
-        screenOptions = {createScreenOptions}         
-        >
-          <Tab.Screen name='Restaurents' component={RestaurentsNavigator} />
-          <Tab.Screen name='Map' component={MapScreen} />
-          <Tab.Screen name='Settings' component={SettingsScreen} />
-        </Tab.Navigator>
+      <FavouritesContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+             <Tab.Navigator screenOptions = {createScreenOptions} >
+                <Tab.Screen name='Restaurents' component={RestaurentsNavigator} />
+                <Tab.Screen name='Map' component={MapScreen} />
+                <Tab.Screen name='Settings' component={SettingsScreen} />
+             </Tab.Navigator>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
+      </FavouritesContextProvider>
+     
      
     );
 };       
