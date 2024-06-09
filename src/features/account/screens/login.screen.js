@@ -31,7 +31,6 @@ const LoginScreen = ({navigation}) => {
                             textContentType='password'
                             secureTextEntry
                             autoCapitalize='none'
-                            secure
                             onChangeText={(p) => setPassword(p)}/>
                     </Spacer>
                    {error && <Spacer position='top' size='large'>
@@ -46,7 +45,7 @@ const LoginScreen = ({navigation}) => {
                     </Spacer>
                 </AccountContainer>
                 <ErrorContainer >
-                    <AuthButton onPress={() => navigation.goBack()}>go back</AuthButton>
+                    <AuthButton onPress={() => navigation.goBack()}>Back</AuthButton>
                 </ErrorContainer>
                
             </AccountBackground> 
