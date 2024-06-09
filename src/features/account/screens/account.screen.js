@@ -1,11 +1,27 @@
 import React from 'react';
-import { AccountBackground } from '../components/account.styles';
+
+import { AccountBackground, AccountCover, AccountContainer, AuthButton } from '../components/account.styles';
+import { Spacer } from '../../../components/spacer/spacer.components';
 
 
-const AccountScreen = ({}) => {
-    console.log('account screen');
+const AccountScreen = ({navigation}) => {
+   
     return (
-            <AccountBackground/> 
+            <AccountBackground>
+                <AccountCover/>
+                    <AccountContainer>
+                        <AuthButton 
+                            onPress={() => navigation.navigate('Login')}>
+                                Login
+                        </AuthButton>
+                        <Spacer size='large' position='top'>
+                            <AuthButton
+                                onPress={() => navigation.navigate('Register')}>
+                                    Register
+                            </AuthButton>
+                        </Spacer>
+                    </AccountContainer>
+            </AccountBackground> 
     );
 };
 
