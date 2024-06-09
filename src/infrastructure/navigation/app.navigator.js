@@ -1,13 +1,13 @@
         
 import React, {useContext} from 'react';
-import { Text } from 'react-native';
+import { Text, Button } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicicons from 'react-native-vector-icons/Ionicons';
 
 import { RestaurentsNavigator } from './restaurents.navigator';
 import { MapScreen } from '../../features/map/screens/map.screen';
 import { SafeArea } from '../../components/utility/safe.area.component';
-
+import { AuthenticationContext } from '../../services/autentication/authentication.context';
 
 const TAB_ICONS = {
     Restaurents: 'restaurant',
@@ -30,7 +30,15 @@ const TAB_ICONS = {
   }
   
   
-  const SettingsScreen = () => <SafeArea><Text>Settings screen</Text></SafeArea>
+  const SettingsScreen = () => {
+    const {onLogout} = useContext(AuthenticationContext);
+  return(
+    <SafeArea>
+    <Text>Settings screen</Text>
+    <Button title='logout' onPress={onLogout}/>
+    </SafeArea>
+  )
+ }
 
 export const AppNavigator =() => {
    

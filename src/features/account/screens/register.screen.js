@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 import { AccountBackground, AccountCover, AccountContainer, AuthButton, AuthInput, Title, ErrorContainer } from '../components/account.styles';
 import { AuthenticationContext } from '../../../services/autentication/authentication.context';
 import { Spacer } from '../../../components/spacer/spacer.components';
 import { Text } from '../../../components/typography/text.component';
+import App from '../../../../App';
 
 
 const RegisterScreen = ({navigation}) => {
@@ -11,7 +13,7 @@ const RegisterScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatedPassword, setRepeatedPassword] = useState('');
-    const { onRegister, error } = useContext(AuthenticationContext);
+    const { onRegister, isLoading, error } = useContext(AuthenticationContext);
    
     return (
             <AccountBackground>
@@ -43,20 +45,22 @@ const RegisterScreen = ({navigation}) => {
                             autoCapitalize='none'
                             onChangeText={(p) => setRepeatedPassword(p)}/>
                     </Spacer>
-                   {error && <Spacer position='top' size='large'>
+                   {error && <ErrorContainer position='top' size='large'>
                         <Text variant='error'>{error}</Text>
-                    </Spacer>}
+                    </ErrorContainer>}
                     <Spacer size='large' position='top'>
-                        <AuthButton 
+                        {!isLoading ?(<AuthButton 
                             icon='email'
                             onPress={() => onRegister(email, password, repeatedPassword)}>
                                 Register
-                        </AuthButton>
+                        </AuthButton>): (
+                            <ActivityIndicator animating={isLoading} color={MD2Colors.blue300} />
+                        )}
                     </Spacer>
                 </AccountContainer>
-                <ErrorContainer >
+                <Spacer size='large' position='top'>
                     <AuthButton onPress={() => navigation.goBack()}>Back</AuthButton>
-                </ErrorContainer>
+                </Spacer>
                
             </AccountBackground> 
     );

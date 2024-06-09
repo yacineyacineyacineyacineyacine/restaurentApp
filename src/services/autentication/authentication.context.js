@@ -1,5 +1,7 @@
 import React, { createContext, useState } from 'react';
-import { loginRequest , registerRequest} from './authentication.service';
+import { loginRequest , registerRequest, logoutRequest } from './authentication.service';
+
+import auth from '@react-native-firebase/auth';
 
 export const AuthenticationContext = createContext();
 
@@ -7,6 +9,16 @@ export const AuthenticationContextProvider = ({children}) =>{
     const [user, setUser] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false); 
+
+    auth()
+    .onAuthStateChanged((usr) =>{
+      if(usr){
+        setUser(usr);
+        setIsLoading(false);
+      }else{
+        setIsLoading(false)
+      }
+    })
 
     const onLogin = (email, password) =>{
       if(email === '' || password === ''){
@@ -38,13 +50,19 @@ export const AuthenticationContextProvider = ({children}) =>{
         setIsLoading(false);
       })
       .catch(e =>{
-        console.log(e);
+        
         setIsLoading(false);
         setError(e.toString())
       })
-       
- 
     };
+
+    const onLogout = ()=>{
+      
+      logoutRequest()
+      .then(() =>{
+        setUser(null);
+      });
+    }
     return(
         <AuthenticationContext.Provider value={{
             isAuthenticated: !!user,
@@ -52,7 +70,8 @@ export const AuthenticationContextProvider = ({children}) =>{
             isLoading,
             error,
             onLogin,
-            onRegister
+            onRegister,
+            onLogout
         }}>
          {children}
         </AuthenticationContext.Provider>

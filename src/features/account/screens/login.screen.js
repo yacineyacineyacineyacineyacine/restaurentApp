@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 import { AccountBackground, AccountCover, AccountContainer, AuthButton, AuthInput, Title, ErrorContainer } from '../components/account.styles';
 import { AuthenticationContext } from '../../../services/autentication/authentication.context';
@@ -10,7 +11,7 @@ const LoginScreen = ({navigation}) => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { onLogin, error } = useContext(AuthenticationContext)
+    const { onLogin, isLoading, error } = useContext(AuthenticationContext)
    
     return (
             <AccountBackground>
@@ -33,20 +34,24 @@ const LoginScreen = ({navigation}) => {
                             autoCapitalize='none'
                             onChangeText={(p) => setPassword(p)}/>
                     </Spacer>
-                   {error && <Spacer position='top' size='large'>
+                   {error && <ErrorContainer >
                         <Text variant='error'>{error}</Text>
-                    </Spacer>}
+                    </ErrorContainer>}
                     <Spacer size='large' position='top'>
-                        <AuthButton 
+                        {!isLoading ?(
+                            <AuthButton 
                             icon='lock-open-outline'
                             onPress={() => onLogin(email, password)}>
                                 Login
                         </AuthButton>
+                        ) :(
+                            <ActivityIndicator animating={isLoading} color={MD2Colors.blue300} />
+                        )}
                     </Spacer>
                 </AccountContainer>
-                <ErrorContainer >
+                <Spacer position='top' size='large'>
                     <AuthButton onPress={() => navigation.goBack()}>Back</AuthButton>
-                </ErrorContainer>
+                </Spacer>
                
             </AccountBackground> 
     );
