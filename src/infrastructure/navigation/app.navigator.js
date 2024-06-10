@@ -6,8 +6,7 @@ import Ionicicons from 'react-native-vector-icons/Ionicons';
 
 import { RestaurentsNavigator } from './restaurents.navigator';
 import { MapScreen } from '../../features/map/screens/map.screen';
-import { SafeArea } from '../../components/utility/safe.area.component';
-import { AuthenticationContext } from '../../services/autentication/authentication.context';
+import { SettingsScreen } from '../../features/settings/screens/settings.screen';
 
 import { LocationContextProvider } from '../../services/location/location.context';
 import { FavouritesContextProvider } from '../../services/favourites/favourites.context';
@@ -35,15 +34,7 @@ const TAB_ICONS = {
   }
   
   
-  const SettingsScreen = () => {
-    const {onLogout} = useContext(AuthenticationContext);
-  return(
-    <SafeArea>
-    <Text>Settings screen</Text>
-    <Button title='logout' onPress={onLogout}/>
-    </SafeArea>
-  )
- }
+  
 
 export const AppNavigator =() => {
    
