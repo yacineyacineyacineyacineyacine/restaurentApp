@@ -4,6 +4,7 @@ import { Pressable, StyleSheet} from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
+import { FadeInView } from '../../../components/animations/fade.animation';
 import { RestaurentList } from '../components/restaurant-list.styles';
 import { Spacer } from '../../../components/spacer/spacer.components';
 import { FavouritesBar } from '../../../components/favourites/favourites-bar.component'
@@ -40,21 +41,24 @@ const Restaurentscreen =  ({navigation}) =>  {
            <Loading animating={isLoading} />
         </LoadingContainer>)}
         {isToggled && <FavouritesBar favourites={favourites}  onNavigate={navigation.navigate}/>}
+
         <RestaurentList
           data={restaurants}
           renderItem={(item) => {
             
             return (
-              <Pressable onPress={() => navigation.navigate('RestaurentsDetail', {restaurant: item.item})}>
-                <Spacer position='bottom' size='large'>
-                    <RestaurentInfoCard restaurant={item.item}/>
-                 </Spacer>
-              </Pressable>
-              
+                <Pressable onPress={() => navigation.navigate('RestaurentsDetail', {restaurant: item.item})}>
+                                <Spacer position='bottom' size='large'>
+                                  <FadeInView>
+                                    <RestaurentInfoCard restaurant={item.item}/>
+                                  </FadeInView>      
+                                </Spacer>
+              </Pressable>                           
             )}}
           keyExtractor={(item) => item.name}
          
         />
+        
       </SafeArea>
     </>
   );
