@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components/native';
-import { FlatList , Pressable, StyleSheet} from 'react-native';
+import { Pressable, StyleSheet} from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
+import { RestaurentList } from '../components/restaurant-list.styles';
 import { Spacer } from '../../../components/spacer/spacer.components';
 import { FavouritesBar } from '../../../components/favourites/favourites-bar.component'
 import { SafeArea } from '../../../components/utility/safe.area.component';
@@ -11,12 +12,7 @@ import { RestaurantsContext } from '../../../services/restaurants/restaurents.co
 import { Search } from '../components/search.component';
 import { FavouritesContext } from '../../../services/favourites/favourites.context';
 
- const RestaurentList = styled(FlatList).attrs({
-   contentContainerStyle:{
-    padding:16,
-    backgroundColor: '#ffffff'
-   }
- })``;
+ 
  
  const LoadingContainer = styled.View`
    position: absolute;

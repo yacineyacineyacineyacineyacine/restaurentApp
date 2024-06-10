@@ -18,13 +18,14 @@ export const SettingsScreen = ({navigation}) => {
     const {onLogout, user} = useContext(AuthenticationContext);
   return(
     <SafeArea>
+       <Spacer position='top' size='large'>
         <AvatarContainer>
             <Avatar.Icon size={180} icon='human' backgroundColor='#2182bd'/>
-            <Spacer position='top' size='large'>
-            <Text variant='label'>{user.email}</Text>
-        </Spacer>
+            <Spacer position='top' size='small'>
+               <Text variant='label'>{user.email}</Text>
+            </Spacer>    
         </AvatarContainer>
-       
+        </Spacer>
         <List.Section>
         <SettingsItem
               style={{padding: 16}}
