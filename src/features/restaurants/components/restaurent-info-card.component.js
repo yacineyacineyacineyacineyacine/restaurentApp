@@ -6,11 +6,9 @@ import open from '../../../../assets/open';
 import { Spacer } from '../../../components/spacer/spacer.components';
 import { Text } from '../../../components/typography/text.component';
 import { RestaurentCard, RestaurentCardCover, RestaurentCardContent, Section, Rating, SectionEnd, Icon, Adress } from './restaurent-info-card.styles';
+import { Favourite } from '../../../components/favourites/favourites.component';
 
-
-
-const RestaurentInfoCard = ({restaurent = {}}) =>  {
-  
+const RestaurentInfoCard = ({restaurant}) =>  {
     const {
         name = 'Some restaurent',
         icon = 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
@@ -21,19 +19,21 @@ const RestaurentInfoCard = ({restaurent = {}}) =>  {
         isOpenNow = true,
         rating = 4,
         isClosedTemporarily = true,
-    } = restaurent;
+        placeId
+    } = restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     
   return (
    <RestaurentCard elevation={5}>
+     <Favourite  restaurant={restaurant}/>
      <RestaurentCardCover key={name}  source={{uri: photos[0]}} />
      <RestaurentCardContent>
       <Text variant='label'>{name}</Text>
       <Section>
         <Rating>
           {ratingArray.map((item, index)=>{
-            return  <SvgXml key={index} xml={star} width={20} height={20}/>
+            return  <SvgXml key={`star-${placeId}-${index}`} xml={star} width={20} height={20}/>
           })}
         </Rating>
         <SectionEnd>

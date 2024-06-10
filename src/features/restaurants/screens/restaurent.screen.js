@@ -1,55 +1,64 @@
-import * as React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components/native';
-import { FlatList , StyleSheet} from 'react-native';
-import { Searchbar } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-
+import { Pressable, StyleSheet} from 'react-native';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 import RestaurentInfoCard from '../components/restaurent-info-card.component';
+import { FadeInView } from '../../../components/animations/fade.animation';
+import { RestaurentList } from '../components/restaurant-list.styles';
 import { Spacer } from '../../../components/spacer/spacer.components';
+import { FavouritesBar } from '../../../components/favourites/favourites-bar.component'
 import { SafeArea } from '../../../components/utility/safe.area.component';
+import { RestaurantsContext } from '../../../services/restaurants/restaurents.context';
+import { Search } from '../components/search.component';
+import { FavouritesContext } from '../../../services/favourites/favourites.context';
 
+ 
+ 
+ const LoadingContainer = styled.View`
+   position: absolute;
+   top: 50%;
+   left: 50%
+ `;
+ const Loading = styled(ActivityIndicator).attrs({
+    color: MD2Colors.blue300,
+    size: 50
+ })`
+   margin-left: -25px;
+ `;
 
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.bg.primary};
-  `;
-const StyledSearchbar = styled(Searchbar)`
-  shadow-color: ${(props) => props.theme.colors.ui.primary};
-  background-color: ${(props) => props.theme.colors.bg.primary};
-  border-radius: ${(props) => props.theme.space[1]};
-  `;
- const RestaurentList = styled(FlatList).attrs({
-   contentContainerStyle:{
-    padding:16,
-    backgroundColor: '#ffffff'
-   }
- })`` 
-
-const Restaurentscreen =  () =>  {
-
-   
+const Restaurentscreen =  ({navigation}) =>  {
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const {favourites} = useContext(FavouritesContext);
+  const [isToggled, setIsToggled] = useState(false);
+  
+  
   return (
     <>
       <SafeArea>
-        <SearchContainer>
-          <StyledSearchbar 
-            placeholder='Search'
-            placeholderTextColor='#a9a9ac'
-            icon={() => <Icon name='search' size={20} color='#909090' />}
-            inputStyle={styles.searchBarInputStyle}
-            elevation={5}
-           />
-        </SearchContainer>
+       <Search isFavouritesToggled={isToggled} onFavouriteToggle={() => setIsToggled(!isToggled)} />
+        {isLoading && (<LoadingContainer>
+           <Loading animating={isLoading} />
+        </LoadingContainer>)}
+        {isToggled && <FavouritesBar favourites={favourites}  onNavigate={navigation.navigate}/>}
+
         <RestaurentList
-          data={[{name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {name: 9}, {name: 10}, {name: 11}, {name: 12}]}
-          renderItem={() => 
-            <Spacer position='bottom' size='large'>
-              <RestaurentInfoCard/>
-            </Spacer>}
+          data={restaurants}
+          renderItem={(item) => {
+            
+            return (
+                <Pressable onPress={() => navigation.navigate('RestaurentsDetail', {restaurant: item.item})}>
+                                <Spacer position='bottom' size='large'>
+                                  <FadeInView>
+                                    <RestaurentInfoCard restaurant={item.item}/>
+                                  </FadeInView>      
+                                </Spacer>
+              </Pressable>                           
+            )}}
           keyExtractor={(item) => item.name}
          
         />
+        
       </SafeArea>
     </>
   );
@@ -72,14 +81,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.8,
       shadowRadius: 1,
     },
-    searchBarInputStyle:{
-      color: '#000',
-      fontFamily: 'roboto',
-      fontSize: 15,
-      fontStyle: 'normal',
-      fontWeight: '100',
-      letterSpacing: .5
-    },
+   
     list: {
       
     },
