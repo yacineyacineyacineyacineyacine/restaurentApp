@@ -11,7 +11,6 @@ export const registerRequest = (email, password) =>{
 }
 
 export const logoutRequest = () => {
-   console.log('logout');
    return auth()
    .signOut();
 }

@@ -5,8 +5,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicicons from 'react-native-vector-icons/Ionicons';
 
 import { RestaurentsNavigator } from './restaurents.navigator';
+import { SettingsNavigator } from './settings.navigator';
+
 import { MapScreen } from '../../features/map/screens/map.screen';
-import { SettingsScreen } from '../../features/settings/screens/settings.screen';
 
 import { LocationContextProvider } from '../../services/location/location.context';
 import { FavouritesContextProvider } from '../../services/favourites/favourites.context';
@@ -46,7 +47,7 @@ export const AppNavigator =() => {
              <Tab.Navigator screenOptions = {createScreenOptions} >
                 <Tab.Screen name='Restaurents' component={RestaurentsNavigator} />
                 <Tab.Screen name='Map' component={MapScreen} />
-                <Tab.Screen name='Settings' component={SettingsScreen} />
+                <Tab.Screen name='Settings' component={SettingsNavigator} />
              </Tab.Navigator>
           </RestaurantsContextProvider>
         </LocationContextProvider>
